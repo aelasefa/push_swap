@@ -33,6 +33,8 @@ int	ft_isdigit(int c)
 int	is_valide_number(char *str)
 {
 	int	nb;
+	int	int_min;
+	int	int_max;
 	int	i = 0;
 
 	if (str[i] == '+' || str[i] == '-')
@@ -45,8 +47,30 @@ int	is_valide_number(char *str)
 			return (0);
 		i++;
 	}
-	nb = ft_atoi(str[i]);
-	if (nb < –2147483648 || nb > 2147483647)
+	int_min = 2147483649;
+	int_max = 2147483647;
+	nb = ft_atoi(str);
+	if (nb < int_min || nb > int_max)
 		return (0);
 	return (1);
+}
+
+int	is_duplicates(int *arr, int size)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] == arr[j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

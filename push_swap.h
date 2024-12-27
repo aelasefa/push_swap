@@ -10,6 +10,7 @@ typedef struct s_node
 }	t_node;
 
 int     is_valide_number(char *str);
+int     is_duplicates(int *arr, int size);
 int     ft_isdigit(int c);
 void	add_node_in_top(t_node **stack, int value);
 t_node *pop(t_node *stack);
