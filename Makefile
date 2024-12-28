@@ -1,0 +1,33 @@
+NAME := push_swap
+
+SRCS := check_error.c push_swap_utils.c stack_operations.c
+
+OBJS := $(SRCS:.c=.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+LIBFT = libft.a
+LIBFTDIR = libft
+AR = ar rcs
+
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	make -C $(LIBFTDIR)
+	cp $(LIBFTDIR)/$(LIBFT) $(NAME)
+	$(AR) $(NAME) $(OBJS)
+
+%.o : %.c
+		$(CC) $(CFLAGS) -c  $< -o $@
+
+clean :
+	make -C $(LIBFTDIR) clean
+	rm -f $(OBJS)
+
+fclean : clean
+	make -C $(LIBFTDIR) fclean
+	rm -f $(NAME)
+
+re : fclean all
+
+.PHONY 	: clean

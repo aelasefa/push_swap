@@ -13,7 +13,7 @@ void	print_stack(t_node *stack)
 int main(int ac, char** av)
 {
 	t_node	*stack_a = NULL;
-	t_node	*stack_b = NULL;
+	//t_node	*stack_b = NULL;
 	int	size;
 	int	i;
 	int	*arr;
@@ -21,6 +21,8 @@ int main(int ac, char** av)
 	size = ac - 1;
 	arr = malloc(sizeof(int) * size);
 	i = 0;
+	av[1] = ft_generate_argv(ac, av);
+	printf("----------->%s<----------\n", av[1]);
 	while (i < size)
 	{
 		arr[i] = ft_atoi(av[i + 1]);
