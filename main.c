@@ -1,5 +1,32 @@
 #include "push_swap.h"
 
+void	free_strings(char **strings)
+{
+	int	i;
+
+	i = 0;
+	while (strings[i])
+	{
+		free(strings[i]);
+		i++;
+	}
+	free(strings);
+}
+
+int	is_sorted(t_node *stack_a)
+{
+	t_node *node;
+
+	node = stack_a;
+	while(node && node->next)
+	{
+		if (node->value > node->next->value)
+			return (0);
+		node = node->next;
+	}
+	return (1);
+}
+
 void	print_stack(t_node *stack)
 {
 	while (stack)
@@ -13,32 +40,16 @@ void	print_stack(t_node *stack)
 int main(int ac, char** av)
 {
 	t_node	*stack_a = NULL;
-	//t_node	*stack_b = NULL;
+	t_node	*stack_b = NULL;
 	int	size;
-	int	i;
 	int	*arr;
-
-	size = ac - 1;
-	arr = malloc(sizeof(int) * size);
-	i = 0;
-	av[1] = ft_generate_argv(ac, av);
-	printf("----------->%s<----------\n", av[1]);
-	while (i < size)
+	int	*arr_sorted;
+	check_add(&stack_a, ac, av);
+	if (!is_sorted(stack_a))
 	{
-		arr[i] = ft_atoi(av[i + 1]);
-		i++;
+		size = ft_lstsize(stack_a);
+		arr = push_element_in_arr(&stack_a, size);
+		arr_sorted = sort_arr(arr, size);
+		push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
 	}
-	i = 1;
-	while (i < ac)
-	{
-		if (!is_valide_number(av[i]) || is_duplicates(arr, size))
-		{
-			printf("Error\n");
-			return (1);
-		}
-		add_node_in_top(&stack_a, ft_atoi(av[i]));
-		i++;
-	}
-	printf("stack a:\n");
-	print_stack(stack_a);
 }
