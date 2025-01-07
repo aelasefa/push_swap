@@ -6,7 +6,7 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:36:44 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/07 01:03:29 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/07 01:32:15 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int					is_valid_number(char *str);
 void				is_duplicates(t_node **stack);
 char				*ft_generate_argv(int ac, char **av);
 void				check_add(t_node **stack_a, int ac, char **av);
-
+void    clean_input_in_stack(t_node **stack_a, char **strings, char **strings_tmp);
 int					ft_lstsize(t_node *lst);
 // stack operations
 t_node				*pop(t_node *stack);

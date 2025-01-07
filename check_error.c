@@ -6,7 +6,7 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:01:32 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/07 00:47:31 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/07 01:32:00 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 void	check_add(t_node **stack_a, int ac, char **av)
 {
-	int		i;
-	int		num;
 	char	**strings;
 	char	**strings_tmp;
 	char	*check;
+	int		i;
 
 	check = ft_generate_argv(ac, av);
 	i = 0;
@@ -37,22 +36,30 @@ void	check_add(t_node **stack_a, int ac, char **av)
 			return ;
 		}
 		strings = strings_tmp;
-		while (*strings)
-		{
-			if (!is_valid_number(*strings))
-			{
-				printf("Error\n");
-				free_strings(strings_tmp);
-				exit(1);
-			}
-			num = ft_atoi(*strings);
-			add_node_in_top(stack_a, num);
-			strings++;
-		}
+		clean_input_in_stack(stack_a, strings, strings_tmp);
 		free_strings(strings_tmp);
 		i++;
 	}
 	is_duplicates(stack_a);
+}
+
+void	clean_input_in_stack(t_node **stack_a, char **strings,
+		char **strings_tmp)
+{
+	int	num;
+
+	while (*strings)
+	{
+		if (!is_valid_number(*strings))
+		{
+			printf("Error\n");
+			free_strings(strings_tmp);
+			exit(1);
+		}
+		num = ft_atoi(*strings);
+		add_node_in_top(stack_a, num);
+		strings++;
+	}
 }
 
 int	is_valid_number(char *str)
