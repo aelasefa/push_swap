@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_operations.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/07 00:41:19 by ayelasef          #+#    #+#             */
+/*   Updated: 2025/01/07 00:41:21 by ayelasef         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	push_b(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
 
-	if (!(*stack_a) || !(*stack_a)->next)
+	if (!(*stack_a))
 		return ;
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
@@ -16,8 +28,8 @@ void	push_b(t_node **stack_a, t_node **stack_b)
 void	push_a(t_node **stack_a, t_node **stack_b)
 {
 	t_node	*tmp;
-	
-	if (!(*stack_b) || !(*stack_b)->next)
+
+	if (!(*stack_b))
 		return ;
 	tmp = *stack_b;
 	*stack_b = (*stack_b)->next;

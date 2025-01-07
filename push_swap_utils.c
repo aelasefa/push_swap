@@ -6,7 +6,7 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:02:10 by ayelasef          #+#    #+#             */
-/*   Updated: 2024/12/27 15:02:47 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/06 23:42:23 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,21 @@ static t_node	*ft_creat_node(int value)
 
 void	add_node_in_top(t_node **stack, int value)
 {
-	t_node *node;
+	t_node	*node;
+	t_node	*ptr;
 
 	node = ft_creat_node(value);
 	if (!node)
 		return ;
-	node->next = *stack;
-	*stack = node;
+	if (!*stack)
+	{
+		*stack = node;
+	}
+	else
+	{
+		ptr = *stack;
+		while (ptr->next)
+			ptr = ptr->next;
+		ptr->next = node;
+	}
 }

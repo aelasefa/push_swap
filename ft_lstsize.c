@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 20:41:59 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/02 20:53:29 by ayelasef         ###   ########.fr       */
+/*   Created: 2025/01/07 00:16:20 by ayelasef          #+#    #+#             */
+/*   Updated: 2025/01/07 01:04:41 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_node **stack)
+int	ft_lstsize(t_node *lst)
 {
-	t_node	*tmp;
+	int		count;
 
-	if (!stack)
-		return ;
-	tmp = (*stack)->next;
-	(*stack)->next = (*stack)->next->next;
-	tmp->next = *stack;
-	*stack = tmp;
-}
-
-void	sa(t_node **stack)
-{
-	swap(stack);
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_node **stack)
-{
-	swap(stack);
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_node **stack)
-{
-	sa(stack);
-	sb(stack);
-	write(1, "ss\n", 3);
+	if (!lst)
+		return (0);
+	count = 0;
+	while (lst)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
 }

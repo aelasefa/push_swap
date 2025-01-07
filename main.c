@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/07 00:41:52 by ayelasef          #+#    #+#             */
+/*   Updated: 2025/01/07 00:47:54 by ayelasef         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	free_strings(char **strings)
@@ -15,10 +27,10 @@ void	free_strings(char **strings)
 
 int	is_sorted(t_node *stack_a)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = stack_a;
-	while(node && node->next)
+	while (node && node->next)
 	{
 		if (node->value > node->next->value)
 			return (0);
@@ -34,16 +46,19 @@ void	print_stack(t_node *stack)
 		printf("%d -> ", stack->value);
 		stack = stack->next;
 	}
-	printf ("NULL\n");
+	printf("NULL\n");
 }
 
-int main(int ac, char** av)
+int	main(int ac, char **av)
 {
-	t_node	*stack_a = NULL;
-	t_node	*stack_b = NULL;
-	int	size;
-	int	*arr;
-	int	*arr_sorted;
+	t_node	*stack_a;
+	t_node	*stack_b;
+	int		size;
+	int		*arr;
+	int		*arr_sorted;
+
+	stack_a = NULL;
+	stack_b = NULL;
 	check_add(&stack_a, ac, av);
 	if (!is_sorted(stack_a))
 	{

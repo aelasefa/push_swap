@@ -1,7 +1,8 @@
 NAME := push_swap
 
 SRCS := check_error.c push_swap_utils.c stack_operations.c swap.c \
-	rotate.c reverse_rotate.c  sort_stack.c main.c
+	rotate.c reverse_rotate.c  sort_stack.c  sort_array.c \
+	ft_lstsize.c  main.c
 
 OBJS := $(SRCS:.c=.o)
 

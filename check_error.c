@@ -6,7 +6,7 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:01:32 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/03 01:57:18 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/07 00:47:31 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	check_add(t_node **stack_a, int ac, char **av)
 {
-	int	i;
-	int	num;
+	int		i;
+	int		num;
 	char	**strings;
 	char	**strings_tmp;
 	char	*check;
@@ -60,13 +60,14 @@ int	is_valid_number(char *str)
 	int	nb;
 	int	int_min;
 	int	int_max;
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	if (!ft_isdigit(str[i]))
 		return (0);
-	while(str[i])
+	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
@@ -82,35 +83,35 @@ int	is_valid_number(char *str)
 
 void	is_duplicates(t_node **stack)
 {
-	t_node *tmp;
-	t_node *tmp2;
+	t_node	*tmp;
+	t_node	*tmp2;
 
 	tmp = *stack;
-        while(tmp)
-        {
+	while (tmp)
+	{
 		tmp2 = tmp->next;
-                while (tmp2)
-                {
+		while (tmp2)
+		{
 			if (tmp2->value == tmp->value)
 			{
 				write(1, "Error\n", 6);
 				exit(1);
 			}
-                        tmp2 = tmp2->next;
-                }
+			tmp2 = tmp2->next;
+		}
 		tmp = tmp->next;
-        }
+	}
 }
 
 char	*ft_generate_argv(int ac, char **av)
 {
 	char	*str_join;
 	char	*tmp;
-	int	i;
+	int		i;
 
 	str_join = "";
 	i = 1;
-	while(i < ac)
+	while (i < ac)
 	{
 		if (!av[i][0])
 		{
