@@ -60,11 +60,15 @@ int					*sort_arr(int *arr, int size);
 // main
 void				free_strings(char **strings);
 void				print_stack(t_node *stack);
-//sort_small_element
-void			ft_sort_small_elment(t_node **stack_a, t_node **stack_b, int size);
-void			ft_sort_5_element(t_node **stack_a, t_node **stack_b);
-void			ft_sort_4_element(t_node **stack_a, t_node **stack_b);
-void			ft_sort_3_element(t_node **stack_a);
-void			ft_sort_2_element(t_node **stack_a);
+void				free_stack(t_node **stack);
+int					is_sorted(t_node *stack_a);
+
+// sort_small_element
+void				ft_sort_small_elment(t_node **stack_a, t_node **stack_b,
+						int size);
+void				ft_sort_5_element(t_node **stack_a, t_node **stack_b);
+void				ft_sort_4_element(t_node **stack_a, t_node **stack_b);
+void				ft_sort_3_element(t_node **stack_a);
+void				ft_sort_2_element(t_node **stack);
 
 #endif

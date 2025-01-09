@@ -16,18 +16,14 @@ void	check_add(t_node **stack_a, int ac, char **av)
 {
 	char	**strings;
 	char	**strings_tmp;
-	long		num;
-	int		int_min;
-	int		int_max;
+	long	num;
 	int		i;
 
 	i = 0;
-	int_min = -2147483648;
-	int_max = 2147483647;
 	while (i < ac - 1)
 	{
 		num = ft_atoi(av[i + 1]);
-		if (!av[i + 1][0] || num > int_max || num < int_min)
+		if (!av[i + 1][0] || num > 2147483647 || num < -2147483648)
 			ft_perror();
 		strings_tmp = ft_split(av[i + 1], ' ');
 		if (!strings_tmp)
@@ -69,7 +65,7 @@ int	is_valid_number(char *str)
 	int		int_max;
 	int		i;
 
-	i = 0;	
+	i = 0;
 	int_min = -2147483648;
 	int_max = 2147483647;
 	if (str[i] == '+' || str[i] == '-')

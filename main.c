@@ -49,11 +49,12 @@ void	print_stack(t_node *stack)
 	printf("NULL\n");
 }
 
-void free_stack(t_node **stack)
+void	free_stack(t_node **stack)
 {
-	t_node *curr;
+	t_node	*curr;
+	t_node	*next;
+
 	curr = *stack;
-	t_node *next;
 	while (curr)
 	{
 		next = curr->next;
@@ -84,9 +85,9 @@ int	main(int ac, char **av)
 			push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
 		}
 		else
-			ft_sort_small_elment(&stack_a, &stack_b,size);
+			ft_sort_small_elment(&stack_a, &stack_b, size);
 	}
-	//print_stack(stack_a);
+	print_stack(stack_a);
 	free_stack(&stack_a);
-	return 0;
+	return (0);
 }

@@ -86,9 +86,7 @@ void	increment(int *start, int *end, int *size)
 
 void	push_back_to_stack_a(t_node **stack_a, t_node **stack_b)
 {
-	int	max_position;
-	int	size_b;
-
+	int (max_position), (size_b);
 	max_position = 0;
 	size_b = 0;
 	while (*stack_b)
