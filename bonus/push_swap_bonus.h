@@ -14,7 +14,6 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "libft/libft.h"
-# include "get_next_line/get_next_line.h"
 # include <stdio.h>
 
 typedef struct s_node
@@ -75,4 +74,13 @@ void				ft_sort_2_element(t_node **stack);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 //actions
 void	ft_apply_actions_in_stack(t_node **stack_a, t_node **stack_b, char *line);
+
+//get_next_line
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin_get_line(char *s1, char *s2);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strchr(char *s, int c);
+char	*ft_strdup_get_line(const char *s1);
 #endif

@@ -87,7 +87,7 @@ int	main(int ac, char **av)
 		else
 			ft_sort_small_elment(&stack_a, &stack_b, size);
 	}
-	print_stack(stack_a);
+	//print_stack(stack_a);
 	free_stack(&stack_a);
 	return (0);
 }

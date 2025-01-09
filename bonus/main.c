@@ -68,26 +68,28 @@ int	main(int ac, char **av)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-	int		size;
-	int		*arr;
-	int		*arr_sorted;
+	char	*line;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	line = get_next_line(0);
 	check_add(&stack_a, ac, av);
-	if (!is_sorted(stack_a))
+	ft_apply_actions_in_stack(&stack_a, &stack_b, line);
+	while (line)
 	{
-		size = ft_lstsize(stack_a);
-		if (size > 5)
+		if (is_sorted(stack_a) && stack_b == NULL)
 		{
-			arr = push_element_in_arr(&stack_a, size);
-			arr_sorted = sort_arr(arr, size);
-			push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
+			write(1, "OK\n", 3);
+			exit(0);
 		}
 		else
-			ft_sort_small_elment(&stack_a, &stack_b, size);
+		{
+			write(1, "KO\n", 3);
+			exit(0);
+		}
+		free(line);
 	}
-	//print_stack(stack_a);
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

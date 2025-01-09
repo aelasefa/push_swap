@@ -28,7 +28,6 @@ void	push_b(t_node **stack_a, t_node **stack_b)
 	*stack_a = (*stack_a)->next;
 	tmp->next = *stack_b;
 	*stack_b = tmp;
-	write(1, "pb\n", 3);
 }
 
 void	push_a(t_node **stack_a, t_node **stack_b)
@@ -41,5 +40,4 @@ void	push_a(t_node **stack_a, t_node **stack_b)
 	*stack_b = (*stack_b)->next;
 	tmp->next = *stack_a;
 	*stack_a = tmp;
-	write(1, "pa\n", 3);
 }

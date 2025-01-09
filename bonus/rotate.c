@@ -31,18 +31,15 @@ static void	rotate(t_node **stack)
 void	ra(t_node **stack)
 {
 	rotate(stack);
-	write(1, "ra\n", 3);
 }
 
 void	rb(t_node **stack)
 {
 	rotate(stack);
-	write(1, "rb\n", 3);
 }
 
 void	rr(t_node **stack_a, t_node **stack_b)
 {
 	ra(stack_a);
 	rb(stack_b);
-	write(1, "rr\n", 3);
 }
