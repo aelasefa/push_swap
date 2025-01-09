@@ -6,7 +6,7 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:41:52 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/07 00:47:54 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/09 00:44:16 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,20 @@ void	print_stack(t_node *stack)
 	printf("NULL\n");
 }
 
+void free_stack(t_node **stack)
+{
+	t_node *curr;
+	curr = *stack;
+	t_node *next;
+	while (curr)
+	{
+		next = curr->next;
+		free(curr);
+		curr = next;
+	}
+	*stack = NULL;
+}
+
 int	main(int ac, char **av)
 {
 	t_node	*stack_a;
@@ -63,8 +77,16 @@ int	main(int ac, char **av)
 	if (!is_sorted(stack_a))
 	{
 		size = ft_lstsize(stack_a);
-		arr = push_element_in_arr(&stack_a, size);
-		arr_sorted = sort_arr(arr, size);
-		push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
+		if (size > 5)
+		{
+			arr = push_element_in_arr(&stack_a, size);
+			arr_sorted = sort_arr(arr, size);
+			push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
+		}
+		else
+			ft_sort_small_elment(&stack_a, &stack_b,size);
 	}
+	//print_stack(stack_a);
+	free_stack(&stack_a);
+	return 0;
 }

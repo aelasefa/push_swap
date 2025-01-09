@@ -6,11 +6,17 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:41:19 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/07 00:41:21 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/07 03:46:57 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_perror(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
 void	push_b(t_node **stack_a, t_node **stack_b)
 {
@@ -36,16 +42,4 @@ void	push_a(t_node **stack_a, t_node **stack_b)
 	tmp->next = *stack_a;
 	*stack_a = tmp;
 	write(1, "pa\n", 3);
-}
-
-t_node	*pop(t_node *stack)
-{
-	t_node	*tmp;
-
-	if (!stack)
-		return (NULL);
-	tmp = stack;
-	stack = stack->next;
-	free(tmp);
-	return (stack);
 }

@@ -6,7 +6,7 @@
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 05:06:51 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/07 00:35:56 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/07 06:27:40 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ int	ft_is_small(t_node *stack, int *arr, int index)
 
 void	push_to_stack_b(t_node **stack_a, t_node **stack_b, int *arr, int size)
 {
-	int	start;
-	int	end;
-
+	int (start), (end);
 	start = 0;
 	end = size / 6;
 	if (size > 100)
@@ -62,10 +60,7 @@ void	push_to_stack_b(t_node **stack_a, t_node **stack_b, int *arr, int size)
 		{
 			push_b(stack_a, stack_b);
 			rb(stack_b);
-			if (end < size - 1)
-				end++;
-			if (start < end)
-				start++;
+			increment(&start, &end, &size);
 		}
 		else if (ft_is_small(*stack_a, arr, end))
 		{
@@ -73,10 +68,7 @@ void	push_to_stack_b(t_node **stack_a, t_node **stack_b, int *arr, int size)
 			if (*stack_b && (*stack_b)->next
 				&& (*stack_b)->value < (*stack_b)->next->value)
 				sb(stack_b);
-			if (end < size - 1)
-				end++;
-			if (start < end)
-				start++;
+			increment(&start, &end, &size);
 		}
 		else
 			ra(stack_a);
@@ -84,11 +76,21 @@ void	push_to_stack_b(t_node **stack_a, t_node **stack_b, int *arr, int size)
 	push_back_to_stack_a(stack_a, stack_b);
 }
 
+void	increment(int *start, int *end, int *size)
+{
+	if (*end < *size - 1)
+		(*end)++;
+	if (*start < *end)
+		(*start)++;
+}
+
 void	push_back_to_stack_a(t_node **stack_a, t_node **stack_b)
 {
 	int	max_position;
 	int	size_b;
 
+	max_position = 0;
+	size_b = 0;
 	while (*stack_b)
 	{
 		size_b = ft_lstsize(*stack_b);
