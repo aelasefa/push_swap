@@ -1,15 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 00:36:44 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/08 23:55:52 by ayelasef         ###   ########.fr       */
+/*   Updated: 2025/01/09 19:12:58 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "libft/libft.h"
 # include <stdio.h>
@@ -32,13 +34,13 @@ void				push_a(t_node **stack_a, t_node **stack_b);
 void				push_b(t_node **stack_a, t_node **stack_b);
 void				sa(t_node **stack);
 void				sb(t_node **stack);
-void				ss(t_node **stack);
+void				ss(t_node **stack_a, t_node **stack_b);
 void				ra(t_node **stack);
 void				rb(t_node **stack);
-void				rr(t_node **stack);
+void				rr(t_node **stack_a, t_node **stack_b);
 void				rra(t_node **stack);
 void				rrb(t_node **stack);
-void				rrr(t_node **stack);
+void				rrr(t_node **stack_a, t_node **stack_b);
 void				ft_perror(void);
 // push swap_utils
 void				add_node_in_top(t_node **stack, int value);
@@ -68,6 +70,18 @@ void				ft_sort_5_element(t_node **stack_a, t_node **stack_b);
 void				ft_sort_4_element(t_node **stack_a, t_node **stack_b);
 void				ft_sort_3_element(t_node **stack_a);
 void				ft_sort_2_element(t_node **stack);
-void	push_to_stack_b_(t_node **stack_a, t_node **stack_b);
+// ft_strncmp
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+// actions
+void				ft_apply_actions_in_stack(t_node **stack_a,
+						t_node **stack_b, char *line);
 
+// get_next_line
+char				*get_next_line(int fd);
+size_t				ft_strlen(const char *s);
+char				*ft_strjoin_get_line(char *s1, char *s2);
+char				*ft_substr(char *s, unsigned int start, size_t len);
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_strchr(char *s, int c);
+char				*ft_strdup_get_line(const char *s1);
 #endif

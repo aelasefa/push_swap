@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	free_strings(char **strings)
 {
@@ -58,27 +58,27 @@ int	main(int ac, char **av)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
-	int		size;
-	int		*arr;
-	int		*arr_sorted;
+	char	*line;
 
 	if (ac == 1)
 		exit(1);
 	stack_a = NULL;
 	stack_b = NULL;
+	line = NULL;
 	check_add(&stack_a, ac, av);
-	if (!is_sorted(stack_a))
+	while (1)
 	{
-		size = ft_lstsize(stack_a);
-		if (size > 5)
-		{
-			arr = push_element_in_arr(&stack_a, size);
-			arr_sorted = sort_arr(arr, size);
-			push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
-		}
-		else
-			ft_sort_small_elment(&stack_a, &stack_b, size);
+		line = get_next_line(0);
+		if (!line)
+			break ;
+		ft_apply_actions_in_stack(&stack_a, &stack_b, line);
+		free(line);
 	}
+	if (is_sorted(stack_a) && stack_b == NULL)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 	return (0);
 }

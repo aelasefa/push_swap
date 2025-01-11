@@ -1,12 +1,19 @@
 NAME := push_swap
+BNAME := checker
 
 SRCS := check_error.c push_swap_utils.c stack_operations.c swap.c \
 	rotate.c reverse_rotate.c  sort_stack.c  sort_array.c  sort_small_element.c \
 	ft_lstsize.c  main.c
 
-OBJS := $(SRCS:.c=.o)
+BSRCS := actions_bonus.c ft_strncmp.c main_bonus.c push_swap_utils_bonus.c \
+		 stack_operations_bonus.c check_error_bonus.c get_next_line_utils.c \
+		 reverse_rotate_bonus.c  swap_bonus.c ft_lstsize_bonus.c  get_next_line.c\
+		 rotate_bonus.c 
 
-CC = cc -fsanitize=address -g 
+OBJS := $(SRCS:.c=.o)
+BOBJS := $(BSRCS:.c=.o)
+
+CC = cc  -g
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft.a
 LIBFTDIR = libft
@@ -18,13 +25,18 @@ $(NAME) : $(OBJS)
 	cp $(LIBFTDIR)/$(LIBFT) $(NAME)
 	$(CC) $(CFLAGS) $(OBJS) -L $(LIBFTDIR) -l ft -o $(NAME)
 
+bonus : $(BOBJS)
+	make -C $(LIBFTDIR)
+	cp $(LIBFTDIR)/$(LIBFT) $(NAME)
+	$(CC) $(CFLAGS) $(BOBJS) -L $(LIBFTDIR) -l ft -o $(BNAME)
+
 clean :
 	make -C $(LIBFTDIR) clean
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BOBJS)
 
 fclean : clean
 	make -C $(LIBFTDIR) fclean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BNAME)
 
 re : fclean all
 
