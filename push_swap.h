@@ -1,10 +1,12 @@
+/* ************************************************************************** */
+/*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayelasef <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ayelasef <ayelasef@1337.ma>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 00:36:44 by ayelasef          #+#    #+#             */
-/*   Updated: 2025/01/08 23:55:52 by ayelasef         ###   ########.fr       */
+/*   Created: 2025/01/11 22:04:08 by ayelasef          #+#    #+#             */
+/*   Updated: 2025/01/11 22:04:10 by ayelasef         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +70,10 @@ void				ft_sort_5_element(t_node **stack_a, t_node **stack_b);
 void				ft_sort_4_element(t_node **stack_a, t_node **stack_b);
 void				ft_sort_3_element(t_node **stack_a);
 void				ft_sort_2_element(t_node **stack);
-void	push_to_stack_b_(t_node **stack_a, t_node **stack_b);
+void				push_to_stack_b_(t_node **stack_a, t_node **stack_b);
+
+// sort_small_element_utils
+int					find_min_value(t_node *stack_a);
+void				push_to_stack_b_(t_node **stack_a, t_node **stack_b);
 
 #endif

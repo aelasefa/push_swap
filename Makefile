@@ -3,7 +3,7 @@ BNAME := checker
 
 SRCS := check_error.c push_swap_utils.c stack_operations.c swap.c \
 	rotate.c reverse_rotate.c  sort_stack.c  sort_array.c  sort_small_element.c \
-	ft_lstsize.c  main.c
+	ft_lstsize.c sort_small_element_utils.c  main.c
 
 BSRCS := actions_bonus.c ft_strncmp.c main_bonus.c push_swap_utils_bonus.c \
 		 stack_operations_bonus.c check_error_bonus.c get_next_line_utils.c \
@@ -13,7 +13,7 @@ BSRCS := actions_bonus.c ft_strncmp.c main_bonus.c push_swap_utils_bonus.c \
 OBJS := $(SRCS:.c=.o)
 BOBJS := $(BSRCS:.c=.o)
 
-CC = cc  -g
+CC = cc 
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft.a
 LIBFTDIR = libft
@@ -22,13 +22,11 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	make -C $(LIBFTDIR)
-	cp $(LIBFTDIR)/$(LIBFT) $(NAME)
-	$(CC) $(CFLAGS) $(OBJS) -L $(LIBFTDIR) -l ft -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTDIR)/$(LIBFT) -o $(NAME)
 
 bonus : $(BOBJS)
 	make -C $(LIBFTDIR)
-	cp $(LIBFTDIR)/$(LIBFT) $(NAME)
-	$(CC) $(CFLAGS) $(BOBJS) -L $(LIBFTDIR) -l ft -o $(BNAME)
+	$(CC) $(CFLAGS) $(BOBJS) $(LIBFTDIR)/$(LIBFT) -o $(BNAME)
 
 clean :
 	make -C $(LIBFTDIR) clean

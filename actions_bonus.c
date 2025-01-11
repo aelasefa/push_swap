@@ -15,8 +15,6 @@
 void	ft_apply_actions_in_stack(t_node **stack_a, t_node **stack_b,
 		char *line)
 {
-	if (!line)
-		return ;
 	if (!ft_strncmp("sa\n", line, 3))
 		sa(stack_a);
 	else if (!ft_strncmp("sb\n", line, 3))
