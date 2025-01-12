@@ -14,7 +14,7 @@ OBJS := $(SRCS:.c=.o)
 BOBJS := $(BSRCS:.c=.o)
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft.a
 LIBFTDIR = libft
 
