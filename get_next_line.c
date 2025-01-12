@@ -80,6 +80,7 @@ static char	*ft_next_line(char *storage)
 		cpy[j++] = storage[i++];
 	cpy[j] = '\0';
 	free(storage);
+	storage = NULL;
 	return (cpy);
 }
 

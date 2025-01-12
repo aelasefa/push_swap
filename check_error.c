@@ -24,7 +24,7 @@ void	check_add(t_node **stack_a, int ac, char **av)
 	{
 		num = ft_atoi(av[i + 1]);
 		if (!av[i + 1][0] || num > 2147483647 || num < -2147483648)
-			ft_perror();
+			ft_perror(stack_a);
 		strings_tmp = ft_split(av[i + 1], ' ');
 		if (!strings_tmp)
 		{
@@ -43,18 +43,21 @@ void	clean_input_in_stack(t_node **stack_a, char **strings,
 		char **strings_tmp)
 {
 	int	num;
+	int	i;
 
-	while (*strings)
+	i = 0;
+	while (strings[i])
 	{
-		if (!is_valid_number(*strings))
+		if (!is_valid_number(strings[i]))
 		{
 			write(2, "Error\n", 6);
+			free_stack(stack_a);
 			free_strings(strings_tmp);
 			exit(1);
 		}
-		num = ft_atoi(*strings);
+		num = ft_atoi(strings[i]);
 		add_node_in_top(stack_a, num);
-		strings++;
+		i++;
 	}
 }
 
@@ -94,7 +97,7 @@ void	is_duplicates(t_node **stack)
 		while (tmp2)
 		{
 			if (tmp2->value == tmp->value)
-				ft_perror();
+				ft_perror(stack);
 			tmp2 = tmp2->next;
 		}
 		tmp = tmp->next;

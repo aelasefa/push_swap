@@ -54,31 +54,39 @@ void	free_stack(t_node **stack)
 	*stack = NULL;
 }
 
+void	sort_stack(t_node **stack_a, t_node **stack_b, int *arr, int size)
+{
+	int	*arr_sorted;
+
+	arr_sorted = NULL;
+	arr = push_element_in_arr(stack_a, size);
+	arr_sorted = sort_arr(arr, size);
+	push_to_stack_b(stack_a, stack_b, arr_sorted, size);
+	free(arr_sorted);
+}
+
 int	main(int ac, char **av)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
 	int		size;
 	int		*arr;
-	int		*arr_sorted;
 
 	if (ac == 1)
 		exit(1);
 	stack_a = NULL;
 	stack_b = NULL;
+	arr = NULL;
 	check_add(&stack_a, ac, av);
 	if (!is_sorted(stack_a))
 	{
 		size = ft_lstsize(stack_a);
 		if (size > 5)
-		{
-			arr = push_element_in_arr(&stack_a, size);
-			arr_sorted = sort_arr(arr, size);
-			push_to_stack_b(&stack_a, &stack_b, arr_sorted, size);
-		}
+			sort_stack(&stack_a, &stack_b, arr, size);
 		else
 			ft_sort_small_elment(&stack_a, &stack_b, size);
 	}
 	free_stack(&stack_a);
+	free(arr);
 	return (0);
 }

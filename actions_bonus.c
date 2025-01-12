@@ -28,7 +28,7 @@ void	ft_apply_actions_in_stack(t_node **stack_a, t_node **stack_b,
 	else if (!ft_strncmp("ra\n", line, 3))
 		ra(stack_a);
 	else if (!ft_strncmp("rb\n", line, 3))
-		rb(stack_a);
+		rb(stack_b);
 	else if (!ft_strncmp("rr\n", line, 3))
 		rr(stack_a, stack_b);
 	else if (!ft_strncmp("rra\n", line, 4))
@@ -38,5 +38,5 @@ void	ft_apply_actions_in_stack(t_node **stack_a, t_node **stack_b,
 	else if (!ft_strncmp("rrr\n", line, 4))
 		rrr(stack_a, stack_b);
 	else
-		ft_perror();
+		return (ft_perror(stack_a), free(line));
 }

@@ -14,7 +14,7 @@ OBJS := $(SRCS:.c=.o)
 BOBJS := $(BSRCS:.c=.o)
 
 CC = cc 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 LIBFT = libft.a
 LIBFTDIR = libft
 
@@ -29,7 +29,7 @@ bonus : $(BOBJS)
 	$(CC) $(CFLAGS) $(BOBJS) $(LIBFTDIR)/$(LIBFT) -o $(BNAME)
 
 clean :
-	make -C $(LIBFTDIR) clean
+	make -C $(LIBFTDIR) fclean
 	rm -f $(OBJS) $(BOBJS)
 
 fclean : clean

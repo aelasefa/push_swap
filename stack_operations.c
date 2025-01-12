@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-void	ft_perror(void)
+void	ft_perror(t_node **stack)
 {
+	free_stack(stack);
 	write(2, "Error\n", 6);
 	exit(1);
 }

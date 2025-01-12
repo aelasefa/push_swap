@@ -20,6 +20,7 @@ int	find_max_value(t_node *stack_b)
 
 	max = (stack_b)->value;
 	i = 0;
+	j = 0;
 	while (stack_b)
 	{
 		if (max < stack_b->value)

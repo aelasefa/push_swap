@@ -41,7 +41,7 @@ void				rr(t_node **stack);
 void				rra(t_node **stack);
 void				rrb(t_node **stack);
 void				rrr(t_node **stack);
-void				ft_perror(void);
+void				ft_perror(t_node **stack);
 // push swap_utils
 void				add_node_in_top(t_node **stack, int value);
 // sort_stack
